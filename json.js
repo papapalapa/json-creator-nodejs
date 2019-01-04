@@ -50,10 +50,11 @@ var getInstance = (title) => {
 // Remove one instance that matches the passed title
 var removeInstance = (title) => {
 	var data = fetchData();
-	var filteredInstance = data.filter(instance => instance.title !== title);
-	saveData(filteredInstance);
+	var filteredInstance = data.filter(instance => instance.title === title);
+	var filteredData = data.filter(instance => instance.title !== title);
+	saveData(filteredData);
 
-	return data.length !== filteredInstance.length;
+	return filteredInstance[0];
 };
 
 module.exports = {
